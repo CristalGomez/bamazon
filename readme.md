@@ -10,20 +10,24 @@ Item ID | Item Name | Department | Price | Inventory #
 
 ### How to use:
 
-Run the nodeJS app. When the CLI App has successfully loaded, you will be presented with the items that are in the inventory. Study the items and decide what you want to buy. When you are ready, type in the **item ID** associated with the product you want to buy. *Note: item ID input must be a numerical value. If not entered correctly, the app will throw an err and Bamazon will stop running.* Next, the app will ask you how many items you will like to purchase. Again, this input must be a numerical value, otherwise the app will stop running. Depending on your response, Bamazon will run until the connection has ended. 
+Run the nodeJS app. When the CLI App has successfully loaded, you will be presented with the items that are in the inventory. Study the items and decide what you want to buy. When you are ready, type in the **item ID** associated with the product you want to buy. -- *Note: item ID input must be a numerical value. If not entered correctly, the app will throw an error and Bamazon will stop running.* -- Next, the app will ask you how many items you will like to purchase. Again, this input must be a numerical value, otherwise the app will stop running. Depending on your response, Bamazon will run until the connection has ended. 
 
 If all is well, the app should look like this:
 
 **Inventory Display & user's item ID input**
+Expected response: numerical value
 ![selectID](https://github.com/CristalGomez/bamazon/blob/master/images_customer/selectID.png)
 
 **User's quantity input**
+Expected response: numerical value
 ![selectQty](https://github.com/CristalGomez/bamazon/blob/master/images_customer/selectQty.png)
 
 **If there is a sufficient amount of the item in stock, the transaction will be complete**
+Expected response: y (to confirm -- transaction will complete) or n (to decline -- expect connection to end if this is the entered response)
 ![transComplete](https://github.com/CristalGomez/bamazon/blob/master/images_customer/transComplete.png)
 
 **If stock is low, user will be presented with an option to end the transaction, or shop for something new**
+Expected response: y (to confirm -- user will be taken to mainMenu page) or n (to decline -- connection will end, and Bamazon will say goodbye.)
 ![lowInventory](https://github.com/CristalGomez/bamazon/blob/master/images_customer/lowInventory.png)
 
 **If user chooses not to shop for something else, the connection will end and Bamazon will give a goodbye message**
@@ -35,5 +39,5 @@ If all is well, the app should look like this:
 ![lowInventory_y](https://github.com/CristalGomez/bamazon/blob/master/images_customer/lowInventory_y.png)
 
 
-### Important Notes:
-If you are cloning this app to your machine, note that it will not run unless you fill in the password associated with your MySQL. 
+### Important:
+If you are cloning this app to your machine, it will not run unless you fill in the password associated with your MySQL. 
