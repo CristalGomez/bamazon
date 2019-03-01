@@ -15,26 +15,27 @@ Run the nodeJS app. When the CLI App has successfully loaded, you will be presen
 If all is well, the app should look like this:
 
 **Inventory Display & user's item ID input**
-Expected response: numerical value
+<p>Expected response: numerical value</p>
 ![selectID](https://github.com/CristalGomez/bamazon/blob/master/images_customer/selectID.png)
 
 **User's quantity input**
-Expected response: numerical value
+<p>Expected response: numerical value</p>
 ![selectQty](https://github.com/CristalGomez/bamazon/blob/master/images_customer/selectQty.png)
 
 **If there is a sufficient amount of the item in stock, the transaction will be complete**
-Expected response: y (to confirm -- transaction will complete) or n (to decline -- expect connection to end if this is the entered response)
+<p>Expected response: y (to confirm -- transaction will complete) or n (to decline -- expect connection to end if this is the entered response)</p>
 ![transComplete](https://github.com/CristalGomez/bamazon/blob/master/images_customer/transComplete.png)
 
 **If stock is low, user will be presented with an option to end the transaction, or shop for something new**
-Expected response: y (to confirm -- user will be taken to mainMenu page) or n (to decline -- connection will end, and Bamazon will say goodbye.)
+
+<p>Expected response: y (to confirm -- user will be taken to mainMenu page) or n (to decline -- connection will end, and Bamazon will say goodbye.)</p>
 ![lowInventory](https://github.com/CristalGomez/bamazon/blob/master/images_customer/lowInventory.png)
 
 **If user chooses not to shop for something else, the connection will end and Bamazon will give a goodbye message**
 ![lowInventory_n](https://github.com/CristalGomez/bamazon/blob/master/images_customer/lowInventory_n.png)
 
 **If user chooses to continue shopping, the mainMenu function will run, bringing them to the orginal start of the startBamazon function**
-*Note: the connection does not end*
+<p>*Note: the connection does not end*</p>
 
 ![lowInventory_y](https://github.com/CristalGomez/bamazon/blob/master/images_customer/lowInventory_y.png)
 
