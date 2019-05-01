@@ -1,25 +1,26 @@
-var mysql = require("mysql");
+var mysql = require('mysql');
 var inquirer = require("inquirer");
 var connection = mysql.createConnection({
     host: "localhost",
-    port: 3306,
+    port: 8889,
     user: "root",
-    password: "",
+    password: "root",
     database: "bamazonDB"
 });
 
 connection.connect(function (err) {
     if (err) throw err;
     console.log("Connected as id " + connection.threadId + "\n");
-    startBamazon();
+    console.log("Welcome to Bamazon")
     displayInventory();
+
 })
 
 function displayInventory() {
     //selecting all of the products from MySQL
     connection.query("SELECT * FROM products", function (err, inventory) {
         if (err) throw err;
-        console.log("Welcome to Bamazon")
+
         console.log("----------------------------------------------------------------------------------------------------------------------------------")
         console.log("Recommended items for you:")
         console.log(" ")
@@ -28,6 +29,8 @@ function displayInventory() {
             console.log("Product ID: " + inventory[i].item_id + " | " + inventory[i].product_name + " | " + "Department: " + inventory[i].department_name + " | " + "Price: " + "$" + inventory[i].price + " | " + "Amount in Stock: " + inventory[i].stock_quantity);
         }
         console.log("----------------------------------------------------------------------------------------------------------------------------------")
+        startBamazon();
+
     })
 }
 
@@ -62,6 +65,14 @@ function startBamazon() {
                                 message: "Would you like to purchase this item(s)?"
                             }
                         ]).then(function (continuePurchase) {
+                            // console.log(res[0].stock_quantity)
+                            // console.log(answer.selectQty)
+                            var updateInventory = "UPDATE products SET stock_quantity =" + (res[0].stock_quantity - answer.selectQty) + " WHERE item_id = " + answer.selectID;
+                            console.log(updateInventory)
+
+                            connection.query(updateInventory, function (err, data) {
+                                if (err) throw err;
+                            })
                             if (continuePurchase.choice) {
                                 console.log("Your transaction is complete. Your item(s) will ship out in 3-5 business days.")
                                 console.log("Thanks for shopping at Bamazon! See you again soon!")
@@ -74,19 +85,19 @@ function startBamazon() {
                 }
             })
 
-            var updateInventory = function () {
-                // var inventoryQty = connection.query("SELECT stock_quantity FROM products")
-                // var purchasedAmt = answer.selectQty
-                // var updatedInventory = inventoryQty - purchasedAmt
+            // var updateInventory = function () {
+            //     // var inventoryQty = connection.query("SELECT stock_quantity FROM products")
+            //     // var purchasedAmt = answer.selectQty
+            //     // var updatedInventory = inventoryQty - purchasedAmt
 
-            var updateInventory = connection.query("UPDATE products SET stock_quantity =", + res.stock_quantity - answer.selectQty) + "WHERE item_id = " + item_id;
+            //     var updateInventory = connection.query("UPDATE products SET stock_quantity =", + res.stock_quantity - answer.selectQty) + "WHERE item_id = " + item_id;
 
-            connection.query(updateInventory, function(err, data){
-                if (err) throw err;
-            })
-        }//end of updated inventory func
+            //     connection.query(updateInventory, function (err, data) {
+            //         if (err) throw err;
+            //     })
+            // }//end of updated inventory func
 
-        updateInventory()
+
 
         })//end of user's transaction
 
